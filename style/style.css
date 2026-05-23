@@ -1,0 +1,267 @@
+/* === Umum === */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  color: #222;
+}
+h1, h2, h3 {
+  margin-top: 0;
+}
+a {
+  color: #1976d2;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.muted {
+  text-align: center;
+  color: #777;
+}
+
+/* === Header === */
+.header {
+  background: #fff;
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header h1 {
+  margin: 0;
+}
+.header nav a {
+  font-weight: bold;
+}
+
+/* === Layout === */
+.container {
+  max-width: 1000px;
+  margin: 25px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+.card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* === Form === */
+.form-row, .form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap: 10px;
+  margin-bottom: 10px;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+/* === Tombol === */
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn-primary {
+  background: #1976d2;
+  color: white;
+}
+.btn-danger {
+  background: #d32f2f;
+  color: white;
+}
+button:hover {
+  opacity: 0.9;
+}
+
+/* === Tabel === */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.table th, .table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+.table th {
+  background: #f5f5f5;
+  text-align: left;
+}
+
+/* === Status === */
+.safe {
+  color: #2e7d32;
+  font-weight: bold;
+}
+.warning {
+  color: #f57c00;
+  font-weight: bold;
+}
+.danger-text {
+  color: #c62828;
+  font-weight: bold;
+}
+
+/* === Menu Home === */
+.home {
+  text-align: center;
+  padding-top: 80px;
+}
+.menu a {
+  display: inline-block;
+  margin: 15px;
+  padding: 15px 25px;
+  background: #1976d2;
+  color: #fff;
+  border-radius: 8px;
+}
+.menu a:hover {
+  background: #0d47a1;
+}
+
+/* === Paket Info === */
+.paket-info {
+  background: #f9fafb;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* === Tracking DO === */
+
+/* Kotak pencarian DO */
+.tracking-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.tracking-search input {
+  flex: 1;
+  min-width: 250px;
+  padding: 8px 10px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.tracking-search button {
+  padding: 8px 16px;
+  background: #1976d2;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.tracking-search button:hover {
+  background: #1258a1;
+}
+
+/* Kotak hasil DO */
+.tracking-result {
+  margin-top: 10px;
+}
+
+.tracking-result h2 {
+  margin-bottom: 10px;
+  color: #1976d2;
+}
+
+/* Tabel detail DO */
+.table-do {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.table-do th {
+  width: 30%;
+  background: #f1f1f1;
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.table-do td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Tabel perjalanan */
+.table-perjalanan {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-perjalanan th {
+  background: #f1f1f1;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table-perjalanan td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Baris tabel animasi ringan */
+.table-perjalanan tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Status DO */
+.status-selesai {
+  color: #2e7d32;
+  font-weight: bold;
+}
+.status-perjalanan {
+  color: #f57c00;
+  font-weight: bold;
+}
+.status-gagal {
+  color: #c62828;
+  font-weight: bold;
+}
+
+/* Pesan tidak ditemukan */
+.tracking-notfound {
+  text-align: center;
+  padding: 20px;
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Transisi lembut untuk hasil DO */
+.card {
+  transition: all 0.2s ease-in-out;
+}
+.card:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
