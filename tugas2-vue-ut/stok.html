@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITTA | Stock</title>
+  <link rel="stylesheet" href="style/style.css">
+  <!-- Gunakan Vue 2 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="js/dataBahanAjar.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>📦 Stok Bahan Ajar</h1>
+    <a href="index.html">🏠 Menu Utama</a>
+  </header>
+
+  <main id="stokApp" class="container">
+    <section class="card">
+      <h2>Filter</h2>
+      <div class="form-grid">
+        <select v-model="filter.upbjj">
+          <option value="">Semua UPBJJ</option>
+          <option v-for="u in upbjjList">{{u}}</option>
+        </select>
+        <select v-model="filter.kategori">
+          <option value="">Semua Kategori</option>
+          <option v-for="k in kategoriList">{{k}}</option>
+        </select>
+        <select v-model="sortBy">
+          <option value="">Default</option>
+          <option value="judul">Judul</option>
+          <option value="qty_desc">Stok Terbanyak</option>
+        </select>
+      </div>
+      <button class="btn-primary" @click="toggleForm">{{showForm?'Tutup Form':'Tambah Data'}}</button>
+    </section>
+
+    <section v-if="showForm" class="card">
+      <h2>Tambah Bahan Ajar</h2>
+      <div class="form-grid">
+        <input v-model="form.kode" placeholder="Kode">
+        <input v-model="form.judul" placeholder="Judul">
+        <input v-model="form.kategori" placeholder="Kategori">
+        <select v-model="form.upbjj">
+          <option v-for="u in upbjjList">{{u}}</option>
+        </select>
+        <input v-model="form.lokasiRak" placeholder="Rak">
+        <input v-model.number="form.harga" placeholder="Harga" type="number">
+        <input v-model.number="form.qty" placeholder="Qty" type="number">
+        <input v-model.number="form.safety" placeholder="Safety" type="number">
+        <textarea v-model="form.catatanHTML" placeholder="Catatan HTML"></textarea>
+      </div>
+      <button class="btn-primary" @click="tambahData">Simpan</button>
+    </section>
+
+    <section class="card">
+      <h2>Daftar Stok</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Kode</th><th>Judul</th><th>Kategori</th><th>UPBJJ</th><th>Rak</th>
+            <th>Harga</th><th>Qty</th><th>Safety</th><th>Status</th><th>Catatan</th><th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(b,i) in stokFiltered" :key="b.kode">
+            <td>{{b.kode}}</td>
+            <td>{{b.judul}}</td>
+            <td>{{b.kategori}}</td>
+            <td>{{b.upbjj}}</td>
+            <td>{{b.lokasiRak}}</td>
+            <td>Rp {{b.harga.toLocaleString('id-ID')}}</td>
+            <td>{{b.qty}}</td>
+            <td>{{b.safety}}</td>
+            <td :class="statusClass(b)">{{statusText(b)}}</td>
+            <td v-html="b.catatanHTML"></td>
+            <td><button class="btn-danger" @click="hapus(i)">Hapus</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/stok-app.js"></script>
+</body>
+</html>

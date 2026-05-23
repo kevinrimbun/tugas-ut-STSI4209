@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITTA | Tracking</title>
+  <link rel="stylesheet" href="style/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="js/dataBahanAjar.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>🚚 Tracking Delivery Order</h1>
+    <a href="index.html">🏠 Menu Utama</a>
+  </header>
+
+  <main id="trackingApp" class="container">
+    <section class="card">
+      <h2>Tambah DO</h2>
+      <form @submit.prevent="tambahDO" class="form-grid">
+        <input v-model="nextNo" disabled>
+        <input v-model="form.nim" placeholder="NIM" required>
+        <input v-model="form.nama" placeholder="Nama" required>
+        <select v-model="form.ekspedisi">
+          <option v-for="p in pengirimanList" :value="p.kode">{{p.nama}}</option>
+        </select>
+        <select v-model="form.paketKode" required>
+          <option value="">Pilih Paket</option>
+          <option v-for="p in paket" :value="p.kode">{{p.kode}} - {{p.nama}}</option>
+        </select>
+        <input type="date" v-model="form.tanggal">
+        <button class="btn-primary" type="submit">Tambah</button>
+      </form>
+
+      <div v-if="paketDipilih" class="paket-info">
+        <p><strong>Isi Paket:</strong></p>
+        <ul><li v-for="i in paketDipilih.isi">{{i}}</li></ul>
+        <p>Harga: Rp {{paketDipilih.harga.toLocaleString('id-ID')}}</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Daftar DO</h2>
+      <table class="table">
+        <thead><tr><th>No</th><th>NIM</th><th>Nama</th><th>Ekspedisi</th><th>Paket</th><th>Tanggal</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr v-for="d in daftarDO" :key="d.no">
+            <td>{{d.no}}</td><td>{{d.nim}}</td><td>{{d.nama}}</td>
+            <td>{{d.ekspedisi}}</td><td>{{d.paket.nama}}</td><td>{{d.tanggal}}</td>
+            <td>Rp {{d.total.toLocaleString('id-ID')}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/tracking-app.js"></script>
+</body>
+</html>
